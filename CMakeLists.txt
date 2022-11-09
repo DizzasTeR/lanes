@@ -5,7 +5,7 @@
 # Please note that the package source code is licensed under its own license.
 
 PROJECT(lanes C)
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 
 FIND_PACKAGE(Lua51 REQUIRED)
@@ -30,6 +30,8 @@ ENDIF(CYGWIN)
 INCLUDE_DIRECTORIES(src)
 aux_source_directory(./src LANES_SRC)
 ADD_LIBRARY(core MODULE ${LANES_SRC})
+
+target_include_directories(VCMPLua PRIVATE src)
 
 IF(UNIX AND NOT CYGWIN)
   SET(LIBS pthread)
